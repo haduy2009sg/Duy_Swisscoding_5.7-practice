@@ -6,22 +6,10 @@ Các nguồn dữ liệu và thông tin tôi có nêu trong: [Data Source](https
 ### Extract Data
 #### 1. Enrollies' Data
 ``` python
-# Enrollies data
-enrollies_data.head()
-# Fixing data types
-## full_name -> String
-enrollies_data['full_name'] = enrollies_data['full_name'].astype('string')
-## city -> String
-enrollies_data['city'] = enrollies_data['city'].astype('string')
-# Missing data handling
-enrollies_data['gender'] = enrollies_data['gender'].fillna(enrollies_data['gender'].mode()[0])
-enrollies_data['gender'] = enrollies_data['gender'].astype('category')
-enrollies_data.info()
-# Handling duplicate
-## Check duplicate
-enrollies_data.duplicated().sum()
-# Consistency
-print(enrollies_data['gender'].unique())
+google_sheet_id = '1VCkHwBjJGRJ21asd9pxW4_0z2PWuKhbLR3gUHm-p4GI'
+url = 'https://docs.google.com/spreadsheets/d/' + google_sheet_id + '/export?format=xlsx'
+enrollies_data = pd.read_excel(url, sheet_name='enrollies')
+enrollies_data.head(5)
 ```
 |index|enrollee\_id|full\_name|city|gender|
 |---|---|---|---|---|
@@ -108,18 +96,24 @@ employment.head(5)
 ### Transform
 #### 1. Enrollies' Data
 ``` python
-google_sheet_id = '1VCkHwBjJGRJ21asd9pxW4_0z2PWuKhbLR3gUHm-p4GI'
-url = 'https://docs.google.com/spreadsheets/d/' + google_sheet_id + '/export?format=xlsx'
-enrollies_data = pd.read_excel(url, sheet_name='enrollies')
-enrollies_data.head(5)
+# Enrollies data
+enrollies_data.head()
+# Fixing data types
+## full_name -> String
+enrollies_data['full_name'] = enrollies_data['full_name'].astype('string')
+## city -> String
+enrollies_data['city'] = enrollies_data['city'].astype('string')
+# Missing data handling
+enrollies_data['gender'] = enrollies_data['gender'].fillna(enrollies_data['gender'].mode()[0])
+enrollies_data['gender'] = enrollies_data['gender'].astype('category')
+enrollies_data.info()
+# Handling duplicate
+## Check duplicate
+enrollies_data.duplicated().sum()
+# Consistency
+print(enrollies_data['gender'].unique())
 ```
-|index|enrollee\_id|full\_name|city|gender|
-|---|---|---|---|---|
-|0|8949|Mike Jones|city\_103|Male|
-|1|29725|Laura Jones|city\_40|Male|
-|2|11561|David Miller|city\_21|NaN|
-|3|33241|Laura Davis|city\_115|NaN|
-|4|666|Alex Martinez|city\_162|Male|
+
 #### 2. Enrollies' education
 ``` python
 url_enrollies_education = 'https://assets.swisscoding.edu.vn/company_course/enrollies_education.xlsx'
