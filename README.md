@@ -22,7 +22,7 @@ enrollies_data.head(5)
 #### 2. Enrollies' education
 ``` python
 url_enrollies_education = 'https://assets.swisscoding.edu.vn/company_course/enrollies_education.xlsx'
-!wget $url_enrollies_education 
+!curl -o enrollies_education.xlsx $url_enrollies_education
 enrollies_education = pd.read_excel('enrollies_education.xlsx')
 enrollies_education.head(5)
 ```
@@ -36,7 +36,7 @@ enrollies_education.head(5)
 #### 3. Enrollies' working experience
 ```python
 url_working_experience = 'https://assets.swisscoding.edu.vn/company_course/work_experience.csv'
-!wget $url_working_experience
+!curl -o work_experience.csv $url_working_experience
 working_experience = pd.read_csv('work_experience.csv')
 working_experience.head(5)
 ```
