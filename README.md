@@ -6,6 +6,7 @@ Các nguồn dữ liệu và thông tin tôi có nêu trong: [Data Source](https
 ### Extract Data
 #### 1. Enrollies' Data
 ``` python
+import pandas as pd
 google_sheet_id = '1VCkHwBjJGRJ21asd9pxW4_0z2PWuKhbLR3gUHm-p4GI'
 url = 'https://docs.google.com/spreadsheets/d/' + google_sheet_id + '/export?format=xlsx'
 enrollies_data = pd.read_excel(url, sheet_name='enrollies')
